@@ -82,20 +82,20 @@ function createBeacon() {
 ##### Start monitoring a single iBeacon
 ```
 var logToDom = function (message) {
-	var e = document.createElement('label');
-	e.innerText = message;
+  var e = document.createElement('label');
+  e.innerText = message;
 
-	var br = document.createElement('br');
-	var br2 = document.createElement('br');
-	document.body.appendChild(e);
-	document.body.appendChild(br);
-	document.body.appendChild(br2);
-	
-	window.scrollTo(0, window.document.height);
+  var br = document.createElement('br');
+  var br2 = document.createElement('br');
+  document.body.appendChild(e);
+  document.body.appendChild(br);
+  document.body.appendChild(br2);
+  
+  window.scrollTo(0, window.document.height);
 };
 
 var delegate = new cordova.plugins.locationManager.Delegate();
-	
+  
 delegate.didDetermineStateForRegion = function (pluginResult) {
 
     logToDom('[DOM] didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
@@ -127,8 +127,8 @@ cordova.plugins.locationManager.requestWhenInUseAuthorization();
 // or cordova.plugins.locationManager.requestAlwaysAuthorization()
 
 cordova.plugins.locationManager.startMonitoringForRegion(beaconRegion)
-	.fail(console.error)
-	.done();
+  .fail(console.error.bind(console))
+  .done();
 
 ```
  
@@ -142,8 +142,8 @@ var major = 5;
 var beaconRegion = new cordova.plugins.locationManager.BeaconRegion(identifier, uuid, major, minor);
 
 cordova.plugins.locationManager.stopMonitoringForRegion(beaconRegion)
-	.fail(console.error)
-	.done();
+  .fail(console.error.bind(console))
+  .done();
 
 ```
  
@@ -151,20 +151,20 @@ cordova.plugins.locationManager.stopMonitoringForRegion(beaconRegion)
 ##### Start ranging a single iBeacon
 ```
 var logToDom = function (message) {
-	var e = document.createElement('label');
-	e.innerText = message;
+  var e = document.createElement('label');
+  e.innerText = message;
 
-	var br = document.createElement('br');
-	var br2 = document.createElement('br');
-	document.body.appendChild(e);
-	document.body.appendChild(br);
-	document.body.appendChild(br2);
-	
-	window.scrollTo(0, window.document.height);
+  var br = document.createElement('br');
+  var br2 = document.createElement('br');
+  document.body.appendChild(e);
+  document.body.appendChild(br);
+  document.body.appendChild(br2);
+  
+  window.scrollTo(0, window.document.height);
 };
 
 var delegate = new cordova.plugins.locationManager.Delegate();
-	
+  
 delegate.didDetermineStateForRegion = function (pluginResult) {
 
     logToDom('[DOM] didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
@@ -198,8 +198,8 @@ cordova.plugins.locationManager.requestWhenInUseAuthorization();
 // or cordova.plugins.locationManager.requestAlwaysAuthorization()
 
 cordova.plugins.locationManager.startRangingBeaconsInRegion(beaconRegion)
-	.fail(console.error)
-	.done();
+  .fail(console.error.bind(console))
+  .done();
 
 ```
  
@@ -212,8 +212,8 @@ var major = 5;
 var beaconRegion = new cordova.plugins.locationManager.BeaconRegion(identifier, uuid, major, minor);
 
 cordova.plugins.locationManager.stopRangingBeaconsInRegion(beaconRegion)
-	.fail(console.error)
-	.done();
+  .fail(console.error.bind(console))
+  .done();
 
 ```
 
@@ -224,7 +224,7 @@ cordova.plugins.locationManager.isAdvertisingAvailable()
     .then(function(isSupported){
         console.log("isSupported: " + isSupported);
     })
-    .fail(console.error)
+    .fail(console.error.bind(console))
     .done();
 
 ```
@@ -236,7 +236,7 @@ cordova.plugins.locationManager.isAdvertising()
     .then(function(isAdvertising){
         console.log("isAdvertising: " + isAdvertising);
     })
-    .fail(console.error)
+    .fail(console.error.bind(console))
     .done();
 
 ```
@@ -277,7 +277,7 @@ cordova.plugins.locationManager.isAdvertisingAvailable()
             console.log("Advertising not supported");
         }
     })
-    .fail(console.error)
+    .fail(console.error.bind(console))
     .done();
 
 ```
@@ -285,7 +285,7 @@ cordova.plugins.locationManager.isAdvertisingAvailable()
 ##### Stopping the advertising (iOS only)
 ```
 cordova.plugins.locationManager.stopAdvertising()
-    .fail(console.error)
+    .fail(console.error.bind(console))
     .done();
 
 ```
@@ -302,7 +302,7 @@ cordova.plugins.locationManager.isBluetoothEnabled()
             cordova.plugins.locationManager.enableBluetooth();        
         }
     })
-    .fail(console.error)
+    .fail(console.error.bind(console))
     .done();
 
 ```
@@ -340,3 +340,4 @@ Executing the test runner will do the following:
 * Open Safari
 * Go to the dev tools window
 * Paste the code from the examples into the javascript console, it should run without any errors.
+
